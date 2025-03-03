@@ -1,17 +1,7 @@
 import java.util.Scanner;
 
 public class multiFunctionCalc {
-    public static void main (String[] args){
-        /* TODO
-        Area Calculator
-        Basic Calculator
-        Random Number Generator
-        Square Root Finder
-        Power Calculator
-        BMI Calculator - weight / (height * height)
-        Tip Calculator
-        */
-
+    public static void main(String[] args) {
         int input; //Input for menu selection
 
         Scanner scanner = new Scanner(System.in);
@@ -81,10 +71,11 @@ public class multiFunctionCalc {
                 System.out.println("The final answer is: " + c);
             } else {
                 System.out.println("Something went wrong. ReRun and try again");
+                System.exit(0);
             }
 
-       //Area Calculator
-        }  else if (input == 2) {
+            //Area Calculator
+        } else if (input == 2) {
             int option;
             System.out.println("Welcome to the Area Calculator!" +
                     "\nPlease select which shape you want to find the area of. (1-4)" +
@@ -107,7 +98,8 @@ public class multiFunctionCalc {
                     System.out.println("The area of this square is: " + area);
 
                     break;
-                } case 2: {//Rectangle
+                }
+                case 2: {//Rectangle
                     double width, height, area;
 
                     System.out.println("Enter the width: ");
@@ -116,23 +108,25 @@ public class multiFunctionCalc {
                     System.out.println("Enter the height: ");
                     height = scanner.nextDouble();
 
-                    area = width*height;
+                    area = width * height;
 
                     System.out.println("The area of this rectangle is: " + area);
 
                     break;
-                } case 3: { //Circle
+                }
+                case 3: { //Circle
                     double radius, area;
 
                     System.out.println("Enter the radius: ");
                     radius = scanner.nextDouble();
 
-                    area = (double) Math.round((Math.PI * Math.pow(radius, 2)) * 100) /100;
+                    area = (double) Math.round((Math.PI * Math.pow(radius, 2)) * 100) / 100;
 
                     System.out.println("The area of this circle is: " + area);
 
                     break;
-                } case 4: { //Triangle
+                }
+                case 4: { //Triangle
                     double base, height, area;
 
                     System.out.println("Enter the base: ");
@@ -146,10 +140,86 @@ public class multiFunctionCalc {
                     System.out.println("The area of this triangle is: " + area);
 
                     break;
-                } default:
+                }
+                default:
                     System.out.println("Something went wrong. ReRun and try again");
             }
+
+            //SQRT Calculator
+        } else if (input == 3) {
+            double num, ans;
+
+            System.out.println("Enter your number: ");
+            num = scanner.nextDouble();
+
+            ans = (double) Math.round((Math.sqrt(num)) * 100) / 100;
+
+            System.out.println("The answer is: " + ans);
+
+
+            //Random Number Generator
+        } else if (input == 4) {
+            int maxNum, num;
+
+            System.out.println("Enter the highest possible number: ");
+            maxNum = scanner.nextInt();
+
+            num = (int) (Math.random() * (maxNum + 1)); //0 - maxNum
+            System.out.println("Your random number is: " + num);
+
+
+            //Powers Calculator
+        } else if (input == 5) {
+            double num, power, ans;
+
+            System.out.println("Enter your number: ");
+            num = scanner.nextDouble();
+
+            System.out.println("Enter the power: ");
+            power = scanner.nextDouble();
+
+            ans = (double) Math.round((Math.pow(num, power)) * 100) / 100;
+
+            System.out.println("Your answer is: " + ans);
+
+
+            //BMI Calculator
+        } else if (input == 6) {
+            double weight, height, bmi;
+
+            System.out.println("(Please Enter in KGS/M) " +
+                    "\nWhat is your weight");
+            weight = scanner.nextDouble();
+
+            System.out.println("(Please enter in METERS! ie. 1.65 instead of 165) " +
+                    "\nPlease enter your height");
+            height = scanner.nextDouble();
+
+            bmi = (double) Math.round((weight / (height * height)) * 100) / 100;
+
+            System.out.println("Your BMI is: " + bmi);
+
+
+            //Tip Amount Calculator
+        } else if (input == 7) {
+            double cost, percent, tip, total;
+
+            System.out.println("How much is the cost of the order? ");
+            cost = scanner.nextDouble();
+
+            System.out.println("How much % tip will you be leaving? ");
+            percent = scanner.nextDouble();
+
+            tip = cost * (percent / 100);
+            total = cost + tip;
+
+            System.out.println("In total, your final bill with a " + percent + "% tip will be: $" + (double)Math.round(total * 100) / 100);
+
+        } else {
+            System.out.println("Something went wrong. ReRun and try again.");
+            System.exit(0);
         }
+        scanner.close();
 
-
-}}
+    }
+}
